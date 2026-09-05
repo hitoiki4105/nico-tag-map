@@ -1,0 +1,124 @@
+  body {
+    font-family: sans-serif; margin: 20px auto; max-width: 1100px;
+    background: #eef3e5; color: #2f3b2a;
+  }
+  h1 { margin-bottom: 4px; color: #33512b; }
+  #toolTagline { color: #33512b; font-weight: bold; margin: 0 0 4px 0; }
+  #subtitle { color: #5c6b52; margin: 0 0 4px 0; font-style: italic; }
+  #contactLine { color: #7c8873; font-size: 12px; margin: 0 0 16px 0; }
+  #contactLine a { color: #4c7a3f; }
+  #langBar { margin-bottom: 16px; }
+  #legend { background: #e2ead6; border: 1px solid #c9d6b8; padding: 12px 16px; margin: 16px 0 20px 0; border-radius: 6px; font-size: 14px; }
+  #legend ul { margin: 0; padding-left: 20px; }
+  #afterStatusSection { margin: 8px 0 16px 0; font-size: 13px; color: #556047; }
+  #firstTagSectionTitle { margin: 20px 0 6px 0; color: #33512b; }
+  .titleWithToggle { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .titleWithToggle h2 { margin-bottom: 0; }
+  #displayModeTitle { margin-top: 0.83em; margin-bottom: 0.83em; }
+  .highlightBox { margin-bottom: 16px; padding: 10px 14px; background: #dde8cb; border-radius: 6px; }
+  #firstTagSection input { font-size: 16px; padding: 6px 10px; }
+  .sectionDescription { font-size: 13px; color: #556047; margin: 4px 0 10px 0; }
+  .infoBox { margin-bottom: 20px; padding: 10px 14px; background: #f4f7ee; border: 1px solid #d7e0c8; border-radius: 6px; }
+  #periodSection { margin-top: 20px; }
+  .boxTitle { margin: 0 0 8px 0; font-size: 14px; font-weight: bold; color: #33512b; }
+  #searchResultTitle { margin: 16px 0 4px 0; color: #33512b; }
+  #mapImageSection { margin: 16px 0; text-align: center; }
+  #mapImage { max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  #firstTagSection input#tagInput { width: 320px; max-width: 100%; }
+  #fairyAnimContainer { position: relative; height: 44px; display: none; margin: 6px 0; overflow: hidden; }
+  #fairyImg { position: absolute; top: 0; height: 40px; width: auto; transition: left 0.6s ease-in-out, transform 0.4s ease-in-out; }
+  #allTagsControls { margin: 4px 0 12px 0; font-size: 13px; color: #556047; display: flex; align-items: center; gap: 10px; }
+  #tagHistoryList { margin: 0; padding-left: 20px; font-size: 13px; color: #33512b; }
+  #tagHistoryList li { margin: 2px 0; }
+  .historyTagItem { cursor: pointer; text-decoration: underline; color: #2e7d32; }
+  .historyTagItem:hover { color: #1b5e20; }
+  #displayModeSection { margin-bottom: 12px; }
+  .clickableTag { color: #2e7d32; cursor: pointer; text-decoration: underline; }
+  .clickableTag:hover { color: #1b5e20; }
+  input, button, select { padding: 6px 10px; font-size: 14px; }
+  button { background: #4c7a3f; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+  button:hover { background: #3d6432; }
+  #status { color: #556047; margin: 8px 0; }
+  #graphWrap { position: relative; }
+  #graph { border: 1px solid #c9d6b8; width: 100%; height: 75vh; cursor: grab; background: #f6f8f1; display: block; }
+  #zoomControls { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 4px; }
+  #zoomControls button { width: 34px; height: 34px; font-size: 16px; }
+  #graphLoadingOverlay {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(51, 81, 43, 0.9); color: #fff; padding: 14px 22px;
+    border-radius: 8px; font-size: 15px; display: none; pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .leader { stroke: #b9c4a8; stroke-width: 1; }
+  .label-text { font-size: 10px; pointer-events: none; fill: #33422b; }
+  .link { stroke: #a9b79a; }
+  .node circle { cursor: pointer; }
+  button.secondaryBtn { background: #8a9a7a; font-size: 12px; padding: 4px 8px; }
+  button.secondaryBtn:hover { background: #74855f; }
+  :root { --accent: #2e7d32; }
+  .textToggleBtn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 0.85rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .textToggleBtn:hover { opacity: 0.5; }
+  .textToggleBtn:active { color: #7fa876; }
+  #backToTopBtn {
+    position: fixed; right: 20px; bottom: 20px; width: 46px; height: 46px;
+    border-radius: 50%; background: #4c7a3f; color: #fff; font-size: 20px;
+    border: none; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    display: flex; align-items: center; justify-content: center; z-index: 1000;
+  }
+  #backToTopBtn:hover { background: #3d6432; }
+  table { border-collapse: collapse; margin-top: 10px; font-size: 13px; background: #fbfdf8; }
+  td, th { border: 1px solid #d7e0c8; padding: 4px 8px; }
+  th { background: #e2ead6; }
+
+  #layoutGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(12px, 3vw, 20px) clamp(12px, 3vw, 24px);
+    align-items: start;
+  }
+  #layoutGrid .gridSectionFull { grid-column: 1 / -1; }
+  #s11, #s12 { display: flex; flex-direction: column; }
+  #s11 { justify-content: center; }
+  #displayModeBox { box-sizing: border-box; }
+  body { padding: clamp(8px, 3vw, 24px); }
+  @media (max-width: 480px) {
+    #firstTagSection input#tagInput,
+    #searchBtn,
+    #periodSection { width: 100% !important; }
+    .displayModeRow { font-size: 15px; }
+  }
+
+  #randomTagsSection { margin: 10px 0 16px 0; }
+  #randomTagsList { margin: 8px 0; display: flex; flex-wrap: wrap; gap: 6px 10px; }
+  #randomTagsList .clickableTag { font-size: 13px; }
+
+  #s11InnerWrap { margin: 0 auto; }
+
+  .displayModeRow { display: block; margin-bottom: 8px; }
+  #rangeFrom, #rangeTo {
+    font-size: 16px;
+    padding: 4px 2px;
+  }
+  #rangeFrom::-webkit-inner-spin-button,
+  #rangeTo::-webkit-inner-spin-button,
+  #rangeFrom::-webkit-outer-spin-button,
+  #rangeTo::-webkit-outer-spin-button {
+    opacity: 1;
+    -webkit-appearance: auto;
+    width: 28px;
+    height: 28px;
+  }
+  #searchBtn { margin-top: 16px; }
+  #applyDisplayBtnWrap { display: flex; justify-content: flex-end; margin-top: 16px; }
