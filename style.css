@@ -101,6 +101,7 @@
   }
 
   #randomTagsSection { margin: 10px 0 16px 0; }
+  #randomTagsTitle { font-size: 13px; color: #556047; }
   #randomTagsList { margin: 8px 0; display: flex; flex-wrap: wrap; gap: 6px 10px; }
   #randomTagsList .clickableTag { font-size: 13px; }
 
