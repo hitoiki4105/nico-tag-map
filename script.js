@@ -317,7 +317,7 @@ function applyLanguage(lang) {
 }
 
 function syncSearchBtnWidth() {
-  const refEl = document.getElementById("periodSection");
+  const refEl = document.getElementById("firstTagSection");
   const btnEl = document.getElementById("searchBtn");
   const inputEl = document.getElementById("tagInput");
   if (!refEl) return;
