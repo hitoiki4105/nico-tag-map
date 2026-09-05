@@ -69,8 +69,6 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
   }
-  .textToggleBtn:hover { opacity: 0.5; }
-  .textToggleBtn:active { color: #7fa876; }
   #backToTopBtn {
     position: fixed; right: 20px; bottom: 20px; width: 46px; height: 46px;
     border-radius: 50%; background: #4c7a3f; color: #fff; font-size: 20px;
