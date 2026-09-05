@@ -90,7 +90,7 @@
   #layoutGrid .gridSectionFull { grid-column: 1 / -1; }
   #s11, #s12 { display: flex; flex-direction: column; }
   #s11 { justify-content: center; }
-  #displayModeBox { box-sizing: border-box; }
+  #displayModeBox { box-sizing: border-box; overflow: auto; }
   body { padding: clamp(8px, 3vw, 24px); }
   @media (max-width: 760px) {
     #layoutGrid { grid-template-columns: 1fr; }

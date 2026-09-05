@@ -362,21 +362,9 @@ function syncS11InnerWrapWidth() {
 window.addEventListener("resize", syncS11InnerWrapWidth);
 
 function syncDisplayModeBoxHeight() {
-  const firstTagSectionEl = document.getElementById("firstTagSection");
   const displayModeBoxEl = document.getElementById("displayModeBox");
-  if (!firstTagSectionEl || !displayModeBoxEl) return;
-  requestAnimationFrame(() => {
-    // 一旦高さ指定を外して本来の高さを測る（狭い画面で1カラムになった場合の誤同期を防ぐ）
-    displayModeBoxEl.style.height = "auto";
-    const isSideBySide = firstTagSectionEl.getBoundingClientRect().top ===
-      displayModeBoxEl.getBoundingClientRect().top;
-    if (!isSideBySide) return; // 1カラム表示時は高さを揃えない
-    const targetHeight = firstTagSectionEl.getBoundingClientRect().height;
-    if (targetHeight > 0) {
-      displayModeBoxEl.style.height = targetHeight + "px";
-      displayModeBoxEl.style.boxSizing = "border-box";
-    }
-  });
+  if (!displayModeBoxEl) return;
+  displayModeBoxEl.style.height = "auto";
 }
 window.addEventListener("resize", syncDisplayModeBoxHeight);
 
