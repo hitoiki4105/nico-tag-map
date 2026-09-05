@@ -592,7 +592,7 @@ document.addEventListener("click", function (e) {
   } else {
     // openerが得られない場合（単独で開いた場合など）は、
     // 同名ウィンドウを開く/呼び出すことで既存タブを再利用してフォーカスする
-    window.open("https://nico-tag-map.hitoiki4105.workers.dev/?tag=" + encodeURIComponent(tagName), "nicoTagMapWindow").focus();
+    window.open("https://hitoiki4105.github.io/nico-tag-map/?tag=" + encodeURIComponent(tagName), "nicoTagMapWindow").focus();
   }
 });
 <\/script>
