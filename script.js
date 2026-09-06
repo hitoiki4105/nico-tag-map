@@ -636,27 +636,77 @@ document.addEventListener("click", function (e) {
   win.document.close();
 });
 
-// 探索したタグの履歴
-const tagHistory = [];
-function recordTagHistory(tagName) {
-  if (tagHistory.length === 0 || tagHistory[0] !== tagName) {
-    tagHistory.unshift(tagName);
+// 探索したタグの履歴（{ name, isAuto } の配列。isAuto=trueは円クリック/履歴/ランダム由来の自動取得、falseは手入力）
+const TAG_HISTORY_STORAGE_KEY = "nicoTagMap_tagHistory";
+const TAG_HISTORY_LIMIT = 50;
+const tagHistory = loadTagHistory();
+
+function loadTagHistory() {
+  try {
+    const raw = localStorage.getItem(TAG_HISTORY_STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) return parsed;
+    return [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveTagHistory() {
+  try {
+    localStorage.setItem(TAG_HISTORY_STORAGE_KEY, JSON.stringify(tagHistory));
+  } catch (e) {
+    // 保存に失敗しても致命的ではないので無視する
+  }
+}
+
+function recordTagHistory(tagName, isAuto) {
+  if (tagHistory.length === 0 || tagHistory[0].name !== tagName) {
+    tagHistory.unshift({ name: tagName, isAuto: !!isAuto });
+    if (tagHistory.length > TAG_HISTORY_LIMIT) {
+      tagHistory.length = TAG_HISTORY_LIMIT;
+    }
+    saveTagHistory();
     renderTagHistory();
   }
 }
 function renderTagHistory() {
   const listEl = document.getElementById("tagHistoryList");
   listEl.innerHTML = "";
-  tagHistory.forEach(name => {
-    const li = document.createElement("li");
-    li.textContent = name;
-    li.classList.add("historyTagItem");
-    li.addEventListener("click", () => {
-      document.getElementById("tagInput").value = name;
-      search(name);
-      document.getElementById("searchResultTitle").scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    listEl.appendChild(li);
+  // 履歴は新しい順（unshiftで先頭に追加）なので、表示は古い順に直してから並べる
+  const ordered = [...tagHistory].reverse();
+  let currentLine = null;
+  ordered.forEach((entry, index) => {
+    if (index === 0 || !entry.isAuto) {
+      // 新しい行を開始：先頭には○を付ける
+      const li = document.createElement("li");
+      li.classList.add("historyTagLine");
+      const tagSpan = document.createElement("span");
+      tagSpan.textContent = "○" + entry.name;
+      tagSpan.classList.add("historyTagItem");
+      tagSpan.addEventListener("click", () => {
+        document.getElementById("tagInput").value = entry.name;
+        search(entry.name);
+        document.getElementById("searchResultTitle").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      li.appendChild(tagSpan);
+      listEl.appendChild(li);
+      currentLine = li;
+    } else {
+      // 自動取得タグは直前の行に「→タグ名」として追記
+      const arrow = document.createTextNode(" → ");
+      const tagSpan = document.createElement("span");
+      tagSpan.textContent = entry.name;
+      tagSpan.classList.add("historyTagItem");
+      tagSpan.addEventListener("click", () => {
+        document.getElementById("tagInput").value = entry.name;
+        search(entry.name);
+        document.getElementById("searchResultTitle").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      currentLine.appendChild(arrow);
+      currentLine.appendChild(tagSpan);
+    }
   });
 }
 
@@ -701,7 +751,7 @@ async function search(tagOverride, reducedRetry) {
     if (data.error) { statusEl.textContent = t.errorPrefix + data.error; hideGraphOverlay(myGeneration); return; }
 
     lastData = data;
-    recordTagHistory(data.centerTag);
+    recordTagHistory(data.centerTag, isRecenter);
 
     if (data.totalCount === 0) {
       statusEl.textContent = t.noVideosFoundMessage;
@@ -801,16 +851,32 @@ document.getElementById("fairyPromoLink").addEventListener("click", (e) => {
   }
 });
 
+function buildTagHistoryText() {
+  const ordered = [...tagHistory].reverse();
+  const lines = [];
+  let currentLine = "";
+  ordered.forEach((entry, index) => {
+    if (index === 0 || !entry.isAuto) {
+      if (currentLine) lines.push(currentLine);
+      currentLine = "○" + entry.name;
+    } else {
+      currentLine += " → " + entry.name;
+    }
+  });
+  if (currentLine) lines.push(currentLine);
+  return lines.join("\n");
+}
+
 document.getElementById("shareTagBtn").addEventListener("click", () => {
-  const centerTag = lastData ? lastData.centerTag : document.getElementById("tagInput").value;
-  const text = `【${centerTag}】のタグ探索マップを見つけたよ！\nhttps://hitoiki4105.github.io/nico-tag-map/?tag=${encodeURIComponent(centerTag)}`;
+  const historyText = buildTagHistoryText();
+  const text = `#ニコニコ動画 の記録！\n${historyText}\n\n#タグ探索マップ で出会いました\nhttps://hitoiki4105.github.io/nico-tag-map/`;
   const shareUrl = "https://x.com/intent/tweet?text=" + encodeURIComponent(text);
   window.open(shareUrl, "_blank", "noopener");
 });
 
 document.getElementById("shareBlueskyBtn").addEventListener("click", () => {
-  const centerTag = lastData ? lastData.centerTag : document.getElementById("tagInput").value;
-  const text = `【${centerTag}】のタグ探索マップを見つけたよ！\nhttps://hitoiki4105.github.io/nico-tag-map/?tag=${encodeURIComponent(centerTag)}`;
+  const historyText = buildTagHistoryText();
+  const text = `#ニコニコ動画 の記録！\n${historyText}\n\n#タグ探索マップ で出会いました\nhttps://hitoiki4105.github.io/nico-tag-map/`;
   const shareUrl = "https://bsky.app/intent/compose?text=" + encodeURIComponent(text);
   window.open(shareUrl, "_blank", "noopener");
 });
@@ -1056,6 +1122,17 @@ document.getElementById("backToTopBtn").addEventListener("click", () => {
 
 applyLanguage("ja");
 window.name = "nicoTagMapWindow";
+renderTagHistory();
+
+const TAG_INPUT_STORAGE_KEY = "nicoTagMap_currentTagInput";
+document.getElementById("tagInput").addEventListener("input", (e) => {
+  try {
+    localStorage.setItem(TAG_INPUT_STORAGE_KEY, e.target.value);
+  } catch (err) {
+    // 保存に失敗しても致命的ではないので無視する
+  }
+});
+
 {
   const initialParams = new URLSearchParams(window.location.search);
   const initialTag = initialParams.get("tag");
@@ -1063,6 +1140,17 @@ window.name = "nicoTagMapWindow";
     document.getElementById("tagInput").value = initialTag;
     search(initialTag);
   } else {
-    search();
+    let savedTag = null;
+    try {
+      savedTag = localStorage.getItem(TAG_INPUT_STORAGE_KEY);
+    } catch (err) {
+      savedTag = null;
+    }
+    if (savedTag) {
+      document.getElementById("tagInput").value = savedTag;
+      search(savedTag);
+    } else {
+      search();
+    }
   }
 }
