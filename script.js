@@ -317,21 +317,14 @@ function applyLanguage(lang) {
 }
 
 function syncSearchBtnWidth() {
-  const refEl = document.getElementById("firstTagSection");
-  const btnEl = document.getElementById("searchBtn");
   const inputEl = document.getElementById("tagInput");
-  if (!refEl) return;
+  const btnEl = document.getElementById("searchBtn");
+  if (!inputEl || !btnEl) return;
   requestAnimationFrame(() => {
-    const width = refEl.getBoundingClientRect().width;
+    const width = inputEl.getBoundingClientRect().width;
     if (width > 0) {
-      if (btnEl) {
-        btnEl.style.width = width + "px";
-        btnEl.style.boxSizing = "border-box";
-      }
-      if (inputEl) {
-        inputEl.style.width = width + "px";
-        inputEl.style.boxSizing = "border-box";
-      }
+      btnEl.style.width = width + "px";
+      btnEl.style.boxSizing = "border-box";
     }
   });
 }

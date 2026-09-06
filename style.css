@@ -14,7 +14,7 @@
   #firstTagSectionTitle { margin: 20px 0 6px 0; color: #33512b; }
   .titleWithToggle { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
   .titleWithToggle h2 { margin-bottom: 0; }
-  #displayModeTitle { margin-top: 0.83em; margin-bottom: 0.83em; }
+  #displayModeTitle { margin: 20px 0 6px 0; }
   .highlightBox { margin-bottom: 16px; padding: 10px 14px; background: #dde8cb; border-radius: 6px; }
   #firstTagSection input { font-size: 16px; padding: 6px 10px; }
   .sectionDescription { font-size: 13px; color: #556047; margin: 4px 0 10px 0; }
@@ -24,7 +24,7 @@
   #searchResultTitle { margin: 16px 0 4px 0; color: #33512b; }
   #mapImageSection { margin: 16px 0; text-align: center; }
   #mapImage { max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-  #firstTagSection input#tagInput { width: 320px; max-width: 100%; }
+  #firstTagSection input#tagInput { width: 100%; box-sizing: border-box; }
   #fairyAnimContainer { position: relative; height: 44px; display: none; margin: 6px 0; overflow: hidden; }
   #fairyImg { position: absolute; top: 0; height: 40px; width: auto; transition: left 0.6s ease-in-out, transform 0.4s ease-in-out; }
   #allTagsControls { margin: 4px 0 12px 0; font-size: 13px; color: #556047; display: flex; align-items: center; gap: 10px; }
@@ -118,6 +118,19 @@
   #rangeTo::-webkit-inner-spin-button,
   #rangeFrom::-webkit-outer-spin-button,
   #rangeTo::-webkit-outer-spin-button {
+    opacity: 1;
+    -webkit-appearance: auto;
+    width: 28px;
+    height: 28px;
+  }
+  #fromYear, #toYear {
+    font-size: 16px;
+    padding: 4px 2px;
+  }
+  #fromYear::-webkit-inner-spin-button,
+  #toYear::-webkit-inner-spin-button,
+  #fromYear::-webkit-outer-spin-button,
+  #toYear::-webkit-outer-spin-button {
     opacity: 1;
     -webkit-appearance: auto;
     width: 28px;
