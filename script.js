@@ -37,16 +37,17 @@ const translations = {
     applyDisplayBtn: "マップの表示を更新する",
     allTagsSummary: "取得された関連タグ",
     tagHistoryTitle: "探索したタグの記録",
-    shareSectionTitle: "発見したタグを共有する",
-    shareDescription1: "・気になったタグをSNSでポストする？連携しなくてもできるってよ！",
+    shareSectionTitle: "冒険の記録",
+    shareDescription1: "・タグ検索の記録をSNSでポストする？連携しなくてもできるってよ！",
     shareDescription2: "・現在表示されているタグを自動的に取得してポストを作るよ。",
     shareTagBtn: "Xでポストする",
     shareBlueskyBtn: "Blueskyでポストする",
     shareDescription3: "・え？このツールを誰かに知らせたい？ありがとう！",
     copySiteUrlBtn: "タグ探索マップのURLをコピーする",
     copySiteUrlMessage: "コピーしました！",
-    fairyPromoTitle: "タグで見つけたいい場所、ランダムで歩いてみる？",
+    fairyPromoTitle: "タグで見つけたいい場所、歩いてみる？",
     fairyPromoDescription: "・クリックすると、妖精さんプレイヤーにワープするよ。",
+    fairyPromoDescription2: "・現在入力されているタグが自動的に入力されます。",
     randomTagsTitle: "・関連タグ一覧からランダムに10件表示します。",
     reshuffleRandomTagsBtn: "別の10件を表示",
     allTagsNewWindowNote: "・中心タグの関連タグの全てを新規タブで表示します。",
@@ -109,16 +110,17 @@ const translations = {
     applyDisplayBtn: "Update the map display",
     allTagsSummary: "Retrieved related tags",
     tagHistoryTitle: "Search history",
-    shareSectionTitle: "Share the tag you found",
-    shareDescription1: "・Want to post a tag you're curious about on social media? No login required!",
+    shareSectionTitle: "Record of your adventure",
+    shareDescription1: "・Want to post your tag search record on social media? No login required!",
     shareDescription2: "・Automatically grabs the currently displayed tag to create your post.",
     shareTagBtn: "Post on X",
     shareBlueskyBtn: "Post on Bluesky",
     shareDescription3: "・Want to tell someone about this tool? Thank you!",
     copySiteUrlBtn: "Copy the tag explore map URL",
     copySiteUrlMessage: "Copied!",
-    fairyPromoTitle: "Want to take a random walk through tags?",
+    fairyPromoTitle: "Want to take a walk through tags?",
     fairyPromoDescription: "・Click to warp to the Fairy Player.",
+    fairyPromoDescription2: "・The tag currently entered will be filled in automatically.",
     randomTagsTitle: "・Shows 10 random tags from the related tag list.",
     reshuffleRandomTagsBtn: "Show another 10",
     allTagsNewWindowNote: "・Shows all related tags for the center tag in a new tab.",
@@ -181,16 +183,17 @@ const translations = {
     applyDisplayBtn: "更新地图显示",
     allTagsSummary: "获取到的相关标签",
     tagHistoryTitle: "搜索过的标签记录",
-    shareSectionTitle: "分享发现的标签",
-    shareDescription1: "・想在社交媒体上分享感兴趣的标签吗？不用登录也能做到！",
+    shareSectionTitle: "冒险记录",
+    shareDescription1: "・想在社交媒体上分享标签搜索记录吗？不用登录也能做到！",
     shareDescription2: "・自动获取当前显示的标签来生成帖子内容。",
     shareTagBtn: "在X上发布",
     shareBlueskyBtn: "在Bluesky上发布",
     shareDescription3: "・想把这个工具介绍给别人吗？谢谢你！",
     copySiteUrlBtn: "复制标签探索地图的URL",
     copySiteUrlMessage: "已复制！",
-    fairyPromoTitle: "想通过标签随机走一走，发现好地方吗？",
+    fairyPromoTitle: "想通过标签走一走，发现好地方吗？",
     fairyPromoDescription: "・点击即可传送到妖精播放器。",
+    fairyPromoDescription2: "・当前输入的标签会自动填入。",
     randomTagsTitle: "・从相关标签列表中随机显示10个。",
     reshuffleRandomTagsBtn: "换一批10个",
     allTagsNewWindowNote: "・在新标签页中显示中心标签的全部相关标签。",
@@ -253,16 +256,17 @@ const translations = {
     applyDisplayBtn: "지도 표시 업데이트",
     allTagsSummary: "가져온 관련 태그",
     tagHistoryTitle: "탐색한 태그 기록",
-    shareSectionTitle: "발견한 태그를 공유하기",
-    shareDescription1: "・관심 있는 태그를 SNS에 올려볼까요? 연동 없이도 가능해요!",
+    shareSectionTitle: "모험의 기록",
+    shareDescription1: "・태그 검색 기록을 SNS에 올려볼까요? 연동 없이도 가능해요!",
     shareDescription2: "・현재 표시된 태그를 자동으로 가져와 게시물을 만듭니다.",
     shareTagBtn: "X에 게시하기",
     shareBlueskyBtn: "Bluesky에 게시하기",
     shareDescription3: "・이 도구를 누군가에게 알리고 싶으신가요? 감사합니다!",
     copySiteUrlBtn: "태그 탐색 지도 URL 복사하기",
     copySiteUrlMessage: "복사했습니다!",
-    fairyPromoTitle: "태그로 찾은 좋은 장소, 무작위로 걸어볼까요?",
+    fairyPromoTitle: "태그로 찾은 좋은 장소, 걸어볼까요?",
     fairyPromoDescription: "・클릭하면 요정 플레이어로 순간이동합니다.",
+    fairyPromoDescription2: "・현재 입력된 태그가 자동으로 입력됩니다.",
     randomTagsTitle: "・관련 태그 목록에서 무작위로 10개를 표시합니다.",
     reshuffleRandomTagsBtn: "다른 10개 보기",
     allTagsNewWindowNote: "・중심 태그의 관련 태그 전체를 새 탭에 표시합니다.",
@@ -341,6 +345,7 @@ function applyLanguage(lang) {
   document.getElementById("copySiteUrlBtn").textContent = t.copySiteUrlBtn;
   document.getElementById("fairyPromoTitle").textContent = t.fairyPromoTitle;
   document.getElementById("fairyPromoDescription").textContent = t.fairyPromoDescription;
+  document.getElementById("fairyPromoDescription2").textContent = t.fairyPromoDescription2;
   document.getElementById("randomTagsTitle").textContent = t.randomTagsTitle;
   document.getElementById("reshuffleRandomTagsBtn").textContent = t.reshuffleRandomTagsBtn;
   document.getElementById("allTagsNewWindowNote").textContent = t.allTagsNewWindowNote;
@@ -787,6 +792,13 @@ function renderRandomTags() {
 
 document.getElementById("reshuffleRandomTagsBtn").addEventListener("click", () => {
   renderRandomTags();
+});
+
+document.getElementById("fairyPromoLink").addEventListener("click", (e) => {
+  const currentTag = document.getElementById("tagInput").value;
+  if (currentTag) {
+    e.currentTarget.href = "https://hitoiki4105.github.io/nico-fairy-player/?include-tags=" + encodeURIComponent(currentTag);
+  }
 });
 
 document.getElementById("shareTagBtn").addEventListener("click", () => {
