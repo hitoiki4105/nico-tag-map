@@ -368,9 +368,11 @@ function applyLanguage(lang) {
   document.getElementById("firstTagExplanationToggle").textContent = t.firstTagExplanationToggle;
   document.getElementById("displayModeExplanationToggle").textContent = t.displayModeExplanationToggle;
   document.getElementById("legendExplanationToggle").textContent = t.legendExplanationToggle;
-  document.getElementById("colRank").textContent = t.colRank;
-  document.getElementById("colName").textContent = t.colName;
-  document.getElementById("colFreq").textContent = t.colFreq;
+  // colRank/colName/colFreqは「全タグ一覧」の新規ウィンドウ内でのみ動的に生成される要素のため、
+  // メインページ読み込み時にはまだ存在しない。存在する時だけ書き換える
+  if (document.getElementById("colRank")) document.getElementById("colRank").textContent = t.colRank;
+  if (document.getElementById("colName")) document.getElementById("colName").textContent = t.colName;
+  if (document.getElementById("colFreq")) document.getElementById("colFreq").textContent = t.colFreq;
   document.getElementById("languageLabel").textContent = t.languageLabel;
   document.getElementById("searchResultTitle").textContent = t.searchResultTitle;
 
