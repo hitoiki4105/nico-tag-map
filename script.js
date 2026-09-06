@@ -41,6 +41,10 @@ const translations = {
     shareDescription1: "・気になったタグをSNSでポストする？連携しなくてもできるってよ！",
     shareDescription2: "・現在表示されているタグを自動的に取得してポストを作るよ。",
     shareTagBtn: "Xでポストする",
+    shareBlueskyBtn: "Blueskyでポストする",
+    shareDescription3: "・え？このツールを誰かに知らせたい？ありがとう！",
+    copySiteUrlBtn: "タグ探索マップのURLをコピーする",
+    copySiteUrlMessage: "コピーしました！",
     fairyPromoTitle: "タグで見つけたいい場所、ランダムで歩いてみる？",
     fairyPromoDescription: "・クリックすると、妖精さんプレイヤーにワープするよ。",
     randomTagsTitle: "・関連タグ一覧からランダムに10件表示します。",
@@ -109,6 +113,10 @@ const translations = {
     shareDescription1: "・Want to post a tag you're curious about on social media? No login required!",
     shareDescription2: "・Automatically grabs the currently displayed tag to create your post.",
     shareTagBtn: "Post on X",
+    shareBlueskyBtn: "Post on Bluesky",
+    shareDescription3: "・Want to tell someone about this tool? Thank you!",
+    copySiteUrlBtn: "Copy the tag explore map URL",
+    copySiteUrlMessage: "Copied!",
     fairyPromoTitle: "Want to take a random walk through tags?",
     fairyPromoDescription: "・Click to warp to the Fairy Player.",
     randomTagsTitle: "・Shows 10 random tags from the related tag list.",
@@ -177,6 +185,10 @@ const translations = {
     shareDescription1: "・想在社交媒体上分享感兴趣的标签吗？不用登录也能做到！",
     shareDescription2: "・自动获取当前显示的标签来生成帖子内容。",
     shareTagBtn: "在X上发布",
+    shareBlueskyBtn: "在Bluesky上发布",
+    shareDescription3: "・想把这个工具介绍给别人吗？谢谢你！",
+    copySiteUrlBtn: "复制标签探索地图的URL",
+    copySiteUrlMessage: "已复制！",
     fairyPromoTitle: "想通过标签随机走一走，发现好地方吗？",
     fairyPromoDescription: "・点击即可传送到妖精播放器。",
     randomTagsTitle: "・从相关标签列表中随机显示10个。",
@@ -245,6 +257,10 @@ const translations = {
     shareDescription1: "・관심 있는 태그를 SNS에 올려볼까요? 연동 없이도 가능해요!",
     shareDescription2: "・현재 표시된 태그를 자동으로 가져와 게시물을 만듭니다.",
     shareTagBtn: "X에 게시하기",
+    shareBlueskyBtn: "Bluesky에 게시하기",
+    shareDescription3: "・이 도구를 누군가에게 알리고 싶으신가요? 감사합니다!",
+    copySiteUrlBtn: "태그 탐색 지도 URL 복사하기",
+    copySiteUrlMessage: "복사했습니다!",
     fairyPromoTitle: "태그로 찾은 좋은 장소, 무작위로 걸어볼까요?",
     fairyPromoDescription: "・클릭하면 요정 플레이어로 순간이동합니다.",
     randomTagsTitle: "・관련 태그 목록에서 무작위로 10개를 표시합니다.",
@@ -320,6 +336,9 @@ function applyLanguage(lang) {
   document.getElementById("shareDescription1").textContent = t.shareDescription1;
   document.getElementById("shareDescription2").textContent = t.shareDescription2;
   document.getElementById("shareTagBtn").textContent = t.shareTagBtn;
+  document.getElementById("shareBlueskyBtn").textContent = t.shareBlueskyBtn;
+  document.getElementById("shareDescription3").textContent = t.shareDescription3;
+  document.getElementById("copySiteUrlBtn").textContent = t.copySiteUrlBtn;
   document.getElementById("fairyPromoTitle").textContent = t.fairyPromoTitle;
   document.getElementById("fairyPromoDescription").textContent = t.fairyPromoDescription;
   document.getElementById("randomTagsTitle").textContent = t.randomTagsTitle;
@@ -775,6 +794,37 @@ document.getElementById("shareTagBtn").addEventListener("click", () => {
   const text = `【${centerTag}】のタグ探索マップを見つけたよ！\nhttps://hitoiki4105.github.io/nico-tag-map/?tag=${encodeURIComponent(centerTag)}`;
   const shareUrl = "https://x.com/intent/tweet?text=" + encodeURIComponent(text);
   window.open(shareUrl, "_blank", "noopener");
+});
+
+document.getElementById("shareBlueskyBtn").addEventListener("click", () => {
+  const centerTag = lastData ? lastData.centerTag : document.getElementById("tagInput").value;
+  const text = `【${centerTag}】のタグ探索マップを見つけたよ！\nhttps://hitoiki4105.github.io/nico-tag-map/?tag=${encodeURIComponent(centerTag)}`;
+  const shareUrl = "https://bsky.app/intent/compose?text=" + encodeURIComponent(text);
+  window.open(shareUrl, "_blank", "noopener");
+});
+
+document.getElementById("copySiteUrlBtn").addEventListener("click", async () => {
+  const siteUrl = "https://hitoiki4105.github.io/nico-tag-map/";
+  try {
+    await navigator.clipboard.writeText(siteUrl);
+  } catch (e) {
+    // clipboard APIが使えない環境向けフォールバック
+    const tempInput = document.createElement("textarea");
+    tempInput.value = siteUrl;
+    tempInput.style.position = "fixed";
+    tempInput.style.opacity = "0";
+    document.body.appendChild(tempInput);
+    tempInput.focus();
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+  }
+  const msgEl = document.getElementById("copySiteUrlMessage");
+  msgEl.textContent = translations[currentLang].copySiteUrlMessage;
+  msgEl.style.display = "inline";
+  setTimeout(() => {
+    msgEl.style.display = "none";
+  }, 2000);
 });
 
 // 森をイメージした色パレット
