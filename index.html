@@ -49,10 +49,8 @@
       <p id="firstTagFreqInfo" class="sectionDescription"></p>
     </div>
     <div id="periodSection" class="infoBox">
-      <div>
-      <p id="periodDescription" class="boxTitle" style="display:inline-block; margin-right:12px;">検索対象動画投稿期間（オプション）</p>
-      <button id="clearPeriodBtn" class="secondaryBtn">期間を指定しない（デフォルトにリセットする）</button>
-    </div>
+      <p id="periodDescription" class="boxTitle">検索対象動画投稿期間（オプション）</p>
+      <p id="periodDescriptionNote" class="sectionDescription"></p>
       <span id="fromYearLabel">開始年:</span>
       <input id="fromYear" type="number" placeholder="例: 2018" style="width:80px" min="2006">
       <span id="toYearLabel">終了年:</span>
@@ -143,18 +141,21 @@
   <h2 id="allTagsSummary">取得された関連タグ</h2>
   <div id="randomTagsSection">
     <span id="randomTagsTitle"></span>
-    <div id="randomTagsList"></div>
+    <div id="randomTagsList" class="infoBox"></div>
     <button id="reshuffleRandomTagsBtn" class="secondaryBtn"></button>
   </div>
   <div id="allTagsControls">
     <span id="allTagsNewWindowNote"></span>
-    <button id="openAllTagsWindowBtn" class="secondaryBtn"></button>
+    <button id="openAllTagsWindowBtn" class="secondaryBtn highlightActionBtn"></button>
   </div>
 </div>
 
 <div id="s32" class="gridSection">
   <h2 id="tagHistoryTitle">探索したタグの記録</h2>
+  <p id="tagHistoryDescription1" class="sectionDescription"></p>
+  <p id="tagHistoryDescription2" class="sectionDescription"></p>
   <div id="tagHistorySection" class="infoBox">
+    <p id="tagHistoryEmptyMessage" style="display:none;"></p>
     <ul id="tagHistoryList"></ul>
   </div>
 </div>
@@ -164,12 +165,12 @@
   <p id="shareDescription1" class="sectionDescription"></p>
   <p id="shareDescription2" class="sectionDescription"></p>
   <div id="shareButtonsRow">
-    <button id="shareBlueskyBtn" class="secondaryBtn"></button>
-    <button id="shareTagBtn" class="secondaryBtn"></button>
+    <button id="shareBlueskyBtn" class="secondaryBtn highlightActionBtn"></button>
+    <button id="shareTagBtn" class="secondaryBtn highlightActionBtn"></button>
   </div>
   <p id="shareDescription3" class="sectionDescription"></p>
   <div id="copyUrlRow">
-    <button id="copySiteUrlBtn" class="secondaryBtn"></button>
+    <button id="copySiteUrlBtn" class="secondaryBtn highlightActionBtn"></button>
     <span id="copySiteUrlMessage" class="copyMessage" style="display:none;"></span>
   </div>
 </div>

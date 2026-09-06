@@ -37,6 +37,9 @@ const translations = {
     applyDisplayBtn: "マップの表示を更新する",
     allTagsSummary: "取得された関連タグ",
     tagHistoryTitle: "探索したタグの記録",
+    tagHistoryDescription1: "・マップを作成したタグの履歴を50件まで表示します。",
+    tagHistoryDescription2: "・関連語クリックによる探索は→、手動入力による探索は○で表示されます。",
+    tagHistoryEmptyMessage: "さぁ、探索をはじめましょう！",
     shareSectionTitle: "冒険の記録",
     shareDescription1: "・タグ検索の記録をSNSでポストする？連携しなくてもできるってよ！",
     shareDescription2: "・現在表示されているタグを自動的に取得してポストを作るよ。",
@@ -67,7 +70,7 @@ const translations = {
     errorPrefix: "エラー: ",
     networkErrorPrefix: "通信エラーが発生しました: ",
     networkErrorHelp: "・総件数が多いタグ（数万〜数十万件）だと、ブラウザ側やCloudflare側のタイムアウトに引っかかって接続が切れることがあります。<br>・Wi-Fiの瞬断やスマホの電波状況など通信環境の一時的な問題の可能性があります。<br>・*.workers.devドメインへのリクエストをブロックしている可能性があります。<br>・ニコニコ側APIの一時的な不調の可能性があります。",
-    clearPeriodBtn: "期間を指定しない",
+    periodDescriptionNote: "・期間を指定しない場合、全期間を対象とします",
     retryButton: "もう一度マップの展開を試みる",
     reducedLoadMessage: "負荷を減らすため、取得件数が最大3800件に変更されました。",
     noVideosFoundMessage: "指定された期間で、指定されたタグを含む動画を見つけられませんでした。",
@@ -110,6 +113,9 @@ const translations = {
     applyDisplayBtn: "Update the map display",
     allTagsSummary: "Retrieved related tags",
     tagHistoryTitle: "Search history",
+    tagHistoryDescription1: "・Shows up to 50 tags whose maps you've created.",
+    tagHistoryDescription2: "・Exploration via related-tag clicks is shown with →, manual input with ○.",
+    tagHistoryEmptyMessage: "Let's start exploring!",
     shareSectionTitle: "Record of your adventure",
     shareDescription1: "・Want to post your tag search record on social media? No login required!",
     shareDescription2: "・Automatically grabs the currently displayed tag to create your post.",
@@ -140,7 +146,7 @@ const translations = {
     errorPrefix: "Error: ",
     networkErrorPrefix: "Network error: ",
     networkErrorHelp: "・For tags with a very high total count (tens or hundreds of thousands), the connection can time out on the browser or Cloudflare side.<br>・A temporary network issue (Wi-Fi drop, weak mobile signal) may be the cause.<br>・An ad blocker or browser extension may be blocking requests to *.workers.dev.<br>・Niconico's API may be temporarily unavailable.",
-    clearPeriodBtn: "Clear period",
+    periodDescriptionNote: "・If no period is specified, all periods are included",
     retryButton: "Retry building the map",
     reducedLoadMessage: "To reduce load, the retrieval limit has been lowered to 3,800 videos.",
     noVideosFoundMessage: "No videos with the given tag were found in the specified period.",
@@ -183,6 +189,9 @@ const translations = {
     applyDisplayBtn: "更新地图显示",
     allTagsSummary: "获取到的相关标签",
     tagHistoryTitle: "搜索过的标签记录",
+    tagHistoryDescription1: "・最多显示50个已生成地图的标签历史。",
+    tagHistoryDescription2: "・通过相关词点击进行的探索用→表示，手动输入的探索用○表示。",
+    tagHistoryEmptyMessage: "来，开始探索吧！",
     shareSectionTitle: "冒险记录",
     shareDescription1: "・想在社交媒体上分享标签搜索记录吗？不用登录也能做到！",
     shareDescription2: "・自动获取当前显示的标签来生成帖子内容。",
@@ -213,7 +222,7 @@ const translations = {
     errorPrefix: "错误: ",
     networkErrorPrefix: "网络错误: ",
     networkErrorHelp: "・如果标签的视频总数很多（数万至数十万），浏览器或Cloudflare一侧可能会超时导致连接中断。<br>・也可能是Wi-Fi瞬断或手机信号不佳等临时网络问题。<br>・广告拦截器或浏览器扩展可能阻止了对*.workers.dev域名的请求。<br>・也可能是Niconico一侧API暂时出现故障。",
-    clearPeriodBtn: "不指定期间",
+    periodDescriptionNote: "・不指定期间时，将以全部时间为对象",
     retryButton: "再次尝试生成地图",
     reducedLoadMessage: "为了减轻负载，获取上限已更改为最多3800个视频。",
     noVideosFoundMessage: "在指定期间内未找到含有该标签的视频。",
@@ -256,6 +265,9 @@ const translations = {
     applyDisplayBtn: "지도 표시 업데이트",
     allTagsSummary: "가져온 관련 태그",
     tagHistoryTitle: "탐색한 태그 기록",
+    tagHistoryDescription1: "・지도를 생성한 태그 기록을 최대 50개까지 표시합니다.",
+    tagHistoryDescription2: "・관련어 클릭을 통한 탐색은 →, 수동 입력을 통한 탐색은 ○로 표시됩니다.",
+    tagHistoryEmptyMessage: "자, 탐색을 시작해볼까요!",
     shareSectionTitle: "모험의 기록",
     shareDescription1: "・태그 검색 기록을 SNS에 올려볼까요? 연동 없이도 가능해요!",
     shareDescription2: "・현재 표시된 태그를 자동으로 가져와 게시물을 만듭니다.",
@@ -286,7 +298,7 @@ const translations = {
     errorPrefix: "오류: ",
     networkErrorPrefix: "통신 오류: ",
     networkErrorHelp: "・태그의 전체 동영상 수가 매우 많으면(수만~수십만 건) 브라우저나 Cloudflare 쪽에서 타임아웃이 발생해 연결이 끊길 수 있습니다.<br>・Wi-Fi 순간 끊김이나 모바일 전파 상태 등 일시적인 통신 환경 문제일 수 있습니다.<br>・광고 차단기나 브라우저 확장 프로그램이 *.workers.dev 도메인 요청을 차단하고 있을 수 있습니다.<br>・니코니코 측 API의 일시적인 장애일 수 있습니다.",
-    clearPeriodBtn: "기간 지정 안 함",
+    periodDescriptionNote: "・기간을 지정하지 않으면 전체 기간이 대상이 됩니다",
     retryButton: "지도 전개 다시 시도",
     reducedLoadMessage: "부하를 줄이기 위해 가져오는 건수가 최대 3800건으로 변경되었습니다.",
     noVideosFoundMessage: "지정한 기간에 해당 태그를 포함한 동영상을 찾을 수 없었습니다.",
@@ -319,6 +331,7 @@ function applyLanguage(lang) {
   document.getElementById("firstTagFreqInfo").textContent = t.firstTagFreqInfo;
   document.getElementById("firstTagInfo").textContent = t.firstTagInfo;
   document.getElementById("periodDescription").textContent = t.periodDescription;
+  document.getElementById("periodDescriptionNote").textContent = t.periodDescriptionNote;
   document.getElementById("fromYearLabel").textContent = t.fromYearLabel;
   document.getElementById("toYearLabel").textContent = t.toYearLabel;
   document.getElementById("searchBtn").textContent = t.searchBtn;
@@ -331,11 +344,13 @@ function applyLanguage(lang) {
   document.getElementById("rangeFromLabel").textContent = t.rangeFromLabel;
   document.getElementById("rangeToLabel").textContent = t.rangeToLabel;
   document.getElementById("applyDisplayBtn").textContent = t.applyDisplayBtn;
-  document.getElementById("clearPeriodBtn").textContent = t.clearPeriodBtn;
   document.getElementById("backToTopBtn").setAttribute("aria-label", t.backToTopLabel);
   document.getElementById("backToTopBtn").setAttribute("title", t.backToTopLabel);
   document.getElementById("allTagsSummary").textContent = t.allTagsSummary;
   document.getElementById("tagHistoryTitle").textContent = t.tagHistoryTitle;
+  document.getElementById("tagHistoryDescription1").textContent = t.tagHistoryDescription1;
+  document.getElementById("tagHistoryDescription2").textContent = t.tagHistoryDescription2;
+  document.getElementById("tagHistoryEmptyMessage").textContent = t.tagHistoryEmptyMessage;
   document.getElementById("shareSectionTitle").textContent = t.shareSectionTitle;
   document.getElementById("shareDescription1").textContent = t.shareDescription1;
   document.getElementById("shareDescription2").textContent = t.shareDescription2;
@@ -470,11 +485,6 @@ let currentSvg = null, currentZoomBehavior = null;
 document.getElementById("searchBtn").addEventListener("click", () => {
   document.getElementById("searchResultTitle").scrollIntoView({ behavior: "smooth", block: "start" });
   search();
-});
-document.getElementById("clearPeriodBtn").addEventListener("click", () => {
-  fromYearInput.value = "";
-  toYearInput.value = "";
-  syncToYearMin();
 });
 document.getElementById("applyDisplayBtn").addEventListener("click", () => {
   const t = translations[currentLang];
@@ -673,7 +683,13 @@ function recordTagHistory(tagName, isAuto) {
 }
 function renderTagHistory() {
   const listEl = document.getElementById("tagHistoryList");
+  const emptyMsgEl = document.getElementById("tagHistoryEmptyMessage");
   listEl.innerHTML = "";
+  if (tagHistory.length === 0) {
+    emptyMsgEl.style.display = "block";
+    return;
+  }
+  emptyMsgEl.style.display = "none";
   // 履歴は新しい順（unshiftで先頭に追加）なので、表示は古い順に直してから並べる
   const ordered = [...tagHistory].reverse();
   let currentLine = null;
