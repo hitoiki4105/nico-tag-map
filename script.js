@@ -37,6 +37,12 @@ const translations = {
     applyDisplayBtn: "マップの表示を更新する",
     allTagsSummary: "取得された関連タグ",
     tagHistoryTitle: "探索したタグの記録",
+    shareSectionTitle: "発見したタグを共有する",
+    shareDescription1: "・気になったタグをSNSでポストする？連携しなくてもできるってよ！",
+    shareDescription2: "・現在表示されているタグを自動的に取得してポストを作るよ。",
+    shareTagBtn: "Xでポストする",
+    fairyPromoTitle: "タグで見つけたいい場所、ランダムで歩いてみる？",
+    fairyPromoDescription: "・クリックすると、妖精さんプレイヤーにワープするよ。",
     randomTagsTitle: "・関連タグ一覧からランダムに10件表示します。",
     reshuffleRandomTagsBtn: "別の10件を表示",
     allTagsNewWindowNote: "・中心タグの関連タグの全てを新規タブで表示します。",
@@ -99,6 +105,12 @@ const translations = {
     applyDisplayBtn: "Update the map display",
     allTagsSummary: "Retrieved related tags",
     tagHistoryTitle: "Search history",
+    shareSectionTitle: "Share the tag you found",
+    shareDescription1: "・Want to post a tag you're curious about on social media? No login required!",
+    shareDescription2: "・Automatically grabs the currently displayed tag to create your post.",
+    shareTagBtn: "Post on X",
+    fairyPromoTitle: "Want to take a random walk through tags?",
+    fairyPromoDescription: "・Click to warp to the Fairy Player.",
     randomTagsTitle: "・Shows 10 random tags from the related tag list.",
     reshuffleRandomTagsBtn: "Show another 10",
     allTagsNewWindowNote: "・Shows all related tags for the center tag in a new tab.",
@@ -161,6 +173,12 @@ const translations = {
     applyDisplayBtn: "更新地图显示",
     allTagsSummary: "获取到的相关标签",
     tagHistoryTitle: "搜索过的标签记录",
+    shareSectionTitle: "分享发现的标签",
+    shareDescription1: "・想在社交媒体上分享感兴趣的标签吗？不用登录也能做到！",
+    shareDescription2: "・自动获取当前显示的标签来生成帖子内容。",
+    shareTagBtn: "在X上发布",
+    fairyPromoTitle: "想通过标签随机走一走，发现好地方吗？",
+    fairyPromoDescription: "・点击即可传送到妖精播放器。",
     randomTagsTitle: "・从相关标签列表中随机显示10个。",
     reshuffleRandomTagsBtn: "换一批10个",
     allTagsNewWindowNote: "・在新标签页中显示中心标签的全部相关标签。",
@@ -223,6 +241,12 @@ const translations = {
     applyDisplayBtn: "지도 표시 업데이트",
     allTagsSummary: "가져온 관련 태그",
     tagHistoryTitle: "탐색한 태그 기록",
+    shareSectionTitle: "발견한 태그를 공유하기",
+    shareDescription1: "・관심 있는 태그를 SNS에 올려볼까요? 연동 없이도 가능해요!",
+    shareDescription2: "・현재 표시된 태그를 자동으로 가져와 게시물을 만듭니다.",
+    shareTagBtn: "X에 게시하기",
+    fairyPromoTitle: "태그로 찾은 좋은 장소, 무작위로 걸어볼까요?",
+    fairyPromoDescription: "・클릭하면 요정 플레이어로 순간이동합니다.",
     randomTagsTitle: "・관련 태그 목록에서 무작위로 10개를 표시합니다.",
     reshuffleRandomTagsBtn: "다른 10개 보기",
     allTagsNewWindowNote: "・중심 태그의 관련 태그 전체를 새 탭에 표시합니다.",
@@ -292,6 +316,12 @@ function applyLanguage(lang) {
   document.getElementById("backToTopBtn").setAttribute("title", t.backToTopLabel);
   document.getElementById("allTagsSummary").textContent = t.allTagsSummary;
   document.getElementById("tagHistoryTitle").textContent = t.tagHistoryTitle;
+  document.getElementById("shareSectionTitle").textContent = t.shareSectionTitle;
+  document.getElementById("shareDescription1").textContent = t.shareDescription1;
+  document.getElementById("shareDescription2").textContent = t.shareDescription2;
+  document.getElementById("shareTagBtn").textContent = t.shareTagBtn;
+  document.getElementById("fairyPromoTitle").textContent = t.fairyPromoTitle;
+  document.getElementById("fairyPromoDescription").textContent = t.fairyPromoDescription;
   document.getElementById("randomTagsTitle").textContent = t.randomTagsTitle;
   document.getElementById("reshuffleRandomTagsBtn").textContent = t.reshuffleRandomTagsBtn;
   document.getElementById("allTagsNewWindowNote").textContent = t.allTagsNewWindowNote;
@@ -738,6 +768,13 @@ function renderRandomTags() {
 
 document.getElementById("reshuffleRandomTagsBtn").addEventListener("click", () => {
   renderRandomTags();
+});
+
+document.getElementById("shareTagBtn").addEventListener("click", () => {
+  const centerTag = lastData ? lastData.centerTag : document.getElementById("tagInput").value;
+  const text = `【${centerTag}】のタグ探索マップを見つけたよ！\nhttps://hitoiki4105.github.io/nico-tag-map/?tag=${encodeURIComponent(centerTag)}`;
+  const shareUrl = "https://x.com/intent/tweet?text=" + encodeURIComponent(text);
+  window.open(shareUrl, "_blank", "noopener");
 });
 
 // 森をイメージした色パレット

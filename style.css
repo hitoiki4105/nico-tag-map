@@ -24,6 +24,8 @@
   #searchResultTitle { margin: 16px 0 4px 0; color: #33512b; }
   #mapImageSection { margin: 16px 0; text-align: center; }
   #mapImage { max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  #fairyPromoImage { max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; display: block; margin: 8px 0; }
+  #shareTagBtn { margin-top: 8px; }
   #firstTagSection input#tagInput { width: 100%; box-sizing: border-box; }
   #fairyAnimContainer { position: relative; height: 44px; display: none; margin: 6px 0; overflow: hidden; }
   #fairyImg { position: absolute; top: 0; height: 40px; width: auto; transition: left 0.6s ease-in-out, transform 0.4s ease-in-out; }
